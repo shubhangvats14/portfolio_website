@@ -18,10 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings #this is done to import our setting file
 from django.conf.urls.static import static #this is done to import static
-
+from . import views
+import blog.views
+import projects.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home),
+    path('blog/', blog.views.home),
+    path('projects/', projects.views.home)
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) #this is done as our image was not able to show as no url was defined for that,
 #so we created a static media which shows that we want to show a static media
 #this is actually done to give the static url of the image which we want to show
